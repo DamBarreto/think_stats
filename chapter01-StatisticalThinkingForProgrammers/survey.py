@@ -106,7 +106,10 @@ class Table(object):
 class Respondents(Table):
     """Represents the respondent table."""
 
-    def ReadRecords(self, data_dir='.', n=None):
+    def ReadRecords(self, n=None):
+        pathworker = WorkPath()
+        data_dir = pathworker.input_path()
+        
         filename = self.GetFilename()
         self.ReadFile(data_dir, filename, self.GetFields(), Respondent, n)
         self.Recode()
@@ -130,7 +133,10 @@ class Respondents(Table):
 class Pregnancies(Table):
     """Contains survey data about a Pregnancy."""
 
-    def ReadRecords(self, data_dir='.', n=None):
+    def ReadRecords(self, n=None):
+        pathworker = WorkPath()
+        data_dir = pathworker.input_path()
+
         filename = self.GetFilename()
         self.ReadFile(data_dir, filename, self.GetFields(), Pregnancy, n)
         self.Recode()
